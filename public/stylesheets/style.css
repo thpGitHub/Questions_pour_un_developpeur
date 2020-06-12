@@ -16,7 +16,7 @@ body {
     opacity: 0.65;
     background: black;
 }
-main{
+form{
     top: 50%;
     left: 50%;
     color: white;
@@ -27,15 +27,28 @@ main{
     background: none;
     font-weight: 400;
 }
-main h1 {
+form h1 {
     color: #55efc4;
     font-size: 50px;
     font-family: 'Selly_Calligraphy', sans-serif ;
 }
-main h3 {
+form h3 {
     letter-spacing: 0.5px;
 }
-button {
+input[type="submit"] {
+    width: 50px;
+    color: white;
+    border: 1px solid #55efc4;
+    padding: 5px;
+    transition: 0.5s;
+    background: none;
+    border-radius: 15px;
+}
+input[type="submit"]:hover {
+    outline: none;
+    background: #55efc4;
+}
+/*button {
     width: 50px;
     color: white;
     border: 1px solid #55efc4;
@@ -47,4 +60,4 @@ button {
 button:hover {
     outline: none;
     background: #55efc4;
-}
+}*/
