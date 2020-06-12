@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'Selly_Calligraphy';
+    src: url('./Selly_Calligraphy.ttf');
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    /*background-color: #2d3436;*/
+    background-image: url("/img/matrix-356024_1920.jpg");
+    background-size: cover;
+}
+#opacity {
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.65;
+    background: black;
+}
+main{
+    top: 50%;
+    left: 50%;
+    color: white;
+    padding: 40px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: none;
+    font-weight: 400;
+}
+main h1 {
+    color: #55efc4;
+    font-size: 50px;
+    font-family: 'Selly_Calligraphy', sans-serif ;
+}
+main h3 {
+    letter-spacing: 0.5px;
+}
+button {
+    width: 50px;
+    color: white;
+    border: 1px solid #55efc4;
+    padding: 5px;
+    transition: 0.5s;
+    background: none;
+    border-radius: 15px;
+}
+button:hover {
+    outline: none;
+    background: #55efc4;
+}
