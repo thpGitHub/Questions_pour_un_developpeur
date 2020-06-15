@@ -1,0 +1,48 @@
+include includes/head
+link(rel='stylesheet' href='/style/style_login.css')
+
+include includes/header
+
+form.box(action='/verify_pseudo_pwd' method='post')
+    h1 LOGIN
+    #message
+    input(type='text' name='pseudo' placeholder='Pseudo')
+    input(type='password' name='pwd' placeholder='Password')
+    input(type='submit' name='submit' value='Login')
+    a(href='/inscription') Create an Account
+
+script.
+
+    document.querySelector('input[type="submit"]').addEventListener('click', (e) => {
+        e.preventDefault();
+
+        if (document.querySelector('input[type="text"]').value === '' ||
+            document.querySelector('input[type="password"]').value === '') {
+                //e.preventDefault();
+                document.querySelector('#message').innerHTML = 'Veuillez remplir tous les champs S V P';
+                return;
+        }
+
+        const request = new XMLHttpRequest(),
+              url     = '/test';// route pour le serveur express
+
+
+        request.open('post', url);
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        request.send(`pseudo=${document.querySelector('input[type="text"]').value}&password=${document.querySelector('input[type="password"]').value}`);
+
+        request.onload = function () {
+            console.log('la reponse = ', request.response);
+            if (request.response === 'ko') {
+                document.querySelector('#message').innerHTML = 'Pseudo ou mot de passe incorrect !';
+            }
+            else  {
+                window.location = "/inscription";
+
+             }
+        }
+        
+        console.log('click');
+
+    })
+// a voir event.stopPropagation();

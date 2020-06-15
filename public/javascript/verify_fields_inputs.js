@@ -1,1 +1,0 @@
-console.log('je suis dans le fichier js verify.......');

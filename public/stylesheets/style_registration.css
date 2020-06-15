@@ -1,12 +1,12 @@
-body {
-    width: 100vw;
-    height: 100vh;
+/*body {
+    !*width: 100vw;
+    height: 100vh;*!
     margin: 0;
     padding: 0;
     font-family: sans-serif;
     background-size: cover;
     background-image: url("/img/matrix-356024_1920.jpg");
-}
+}*/
 form {
     top: 50%;
     left: 50%;
@@ -14,12 +14,12 @@ form {
     text-align: center;
     transform: translate(-50%, -50%);
 }
-#opacity {
+/*#opacity {
     width: 100vw;
     height: 100vh;
     opacity: 0.65;
     background: black;
-}
+}*/
 h1 {
     color: white;
     font-weight: 500;

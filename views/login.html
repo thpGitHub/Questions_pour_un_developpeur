@@ -2,18 +2,21 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Questions pour un développeur</title>
+        <link rel="stylesheet" href="/style/style_global.css">
         <link rel="stylesheet" href="/style/style_login.css">
     </head>
-    <body>
+<body>
         <div id="opacity"></div>
-        <form class="box" action="">
+        <form class="box" action="/verify_pseudo_pwd" method="post">
             <h1>LOGIN</h1>
-            <input type="text" name="" placeholder="Pseudo">
-            <input type="password" name="" placeholder="Password">
-            <input type="submit" name="" value="Login">
+            <div id="message"></div>
+            <input type="text"     name="pseudo" placeholder="Pseudo">
+            <input type="password" name="pwd"    placeholder="Password">
+            <input type="submit"   name="submit" value="Login">
             <a href="/inscription">Create an Account</a>
         </form>
-        <script src="/js/verify_fields_inputs.js"></script>
+        <!--<script src="/js/verify_fields_inputs.js"></script>-->
     </body>
 </html>

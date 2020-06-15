@@ -1,19 +1,18 @@
-body {
+/*body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    /*background-color: #2d3436;*/
     background-size: cover;
     background-image: url("/img/matrix-356024_1920.jpg");
-    /*background-color : rgba(255, 255, 255,0.5);*/
+
 
 }
 #opacity {
     width: 100vw;
     height: 100vh;
-    opacity: 0.8;
+    opacity: 0.65;
     background: black;
-}
+}*/
 .box {
     top: 50%;
     left: 50%;
@@ -30,6 +29,10 @@ body {
     color: white;
     font-weight: 500;
 
+}
+#message {
+    color: tomato;
+    height: 1em;
 }
 .box input[ type = "text" ],
 .box input[ type = "password"] {
@@ -65,6 +68,10 @@ body {
 }
 .box input[ type = "submit"]:hover {
     background: #55efc4;
+}
+.box input[ type = "text" ] { /*pour rapprocher la div avec le message*/
+    margin-top: 1px;
+
 }
 a {
     color: #55efc4;
