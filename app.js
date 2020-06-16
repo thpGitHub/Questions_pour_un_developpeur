@@ -4,7 +4,6 @@ const express    = require('express'),
       http       = require('http').createServer(app),
       bodyParser = require('body-parser');
 
-//const verifyFieldsInputs = require('./verify_fields_inputs');
 // DB
 const MongoClient = require('mongodb').MongoClient,
       url         = 'mongodb://localhost:27017/',
@@ -28,7 +27,7 @@ app.post('/login', (req, res) => {
     res.render('login');
 });
 
-app.post('/test', (req, res) => {
+app.post('/verify_login', (req, res) => {
    console.log('resultat ', req.body);
 
     MongoClient.connect(url,{useNewUrlParser:true, useUnifiedTopology:true}, (err, client) => {
@@ -51,9 +50,50 @@ app.post('/test', (req, res) => {
             }
         });
     });
+});
+app.post('/verify_registration', (req, res) => {
 
-app.use('/toto', (req, res) => {
-   res.render('index');
+    MongoClient.connect(url,{useNewUrlParser:true, useUnifiedTopology:true}, (err, client) => {
+        if (err) {
+            return console.log('err');// return arrête la route
+        }
+        const db = client.db(dbName);
+        const myCollection = db.collection('login');
+        myCollection.find({ pseudo: req.body.pseudo }).toArray((err, docs) => {
+            client.close();
+            console.log(docs);
+            //res.render('accueil', {title: 'Accueil', datas: docs});
+            if (docs.length) {
+                res.send('ok le pseudo existe dans la bdd');
+                //res.render('game_arena');
+            }else {
+                //res.render('index', { message: 'Pseudo ou Mot de passe incorrect' });
+                res.send('ko le pseudo n existe PAS dans la bdd');
+            }
+        });
+    });
+
+});
+app.post('/save_registration_in_db', (req, res) => {
+    MongoClient.connect(url,{ useNewUrlParser:true, useUnifiedTopology:true }, (err, client) => {
+        if (err) {
+            return console.log('err');
+        }
+
+        const db = client.db(dbName);
+        const myCollection = db.collection('login');
+        myCollection.insert({ level: 2,
+            pseudo: req.body.pseudo,
+            picture: '',
+            password: req.body.password,
+            best_score: 0 }, (err) => {
+            res.send('ok');
+        })
+    });
+});
+
+app.get('/game', (req, res) => {
+   res.render('game');
 });
 
 
@@ -62,7 +102,7 @@ app.use('/toto', (req, res) => {
 
 
 
-});
+
 
 app.post('/verify_pseudo_pwd', (req, res) => {
     console.log(req.body);

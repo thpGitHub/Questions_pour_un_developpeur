@@ -3,14 +3,16 @@ link(rel='stylesheet' href='/style/style_registration.css')
 
 include includes/header
 
-form(action='/check/registration' method='post')
+form(action='/save_registration_in_db' method='post')
     h1 Inscription
-    #pseudo_keep
+    #message_fields_empty
     label(for='pseudo')
     input#pseudo(type='text' placeholder='pseudo' name='pseudo' autocomplete='off' spellcheck='false')
+    #message_pseudo
     label(for='password')
     input#password(type='password' placeholder='Mot de passe' name='password')
-    #password_not_same
+    #message_password
     label(for='confirm_password')
     input#confirm_password(type='password' placeholder='Confirmer le mot de passe' name='confirm_password')
     input(type='submit' value='Valider' name='valid_registration')
+    script(src='/js/registration.js')
