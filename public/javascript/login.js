@@ -28,6 +28,7 @@ document.querySelector('input[type="submit"]').addEventListener('click', (e) => 
         }
         else  {
             window.location = "/game";
+            //window.location = "/questions";
 
         }
     }

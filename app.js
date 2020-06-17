@@ -94,6 +94,28 @@ app.post('/save_registration_in_db', (req, res) => {
 
 app.get('/game', (req, res) => {
    res.render('game');
+    console.log('resultat ', req.body);
+
+    /*MongoClient.connect(url,{useNewUrlParser:true, useUnifiedTopology:true}, (err, client) => {
+        if (err) {
+            return console.log('err');// return arrête la route
+        }
+
+        const db = client.db(dbName);
+        const myCollection = db.collection('questions');
+        myCollection.find({}).toArray((err, docs) => {
+            client.close();
+            console.log(docs);
+            //res.render('accueil', {title: 'Accueil', datas: docs});
+            /!*if (docs.length) {
+                //res.send('ok');
+                res.render('index');
+            }else {
+                //res.render('index', { message: 'Pseudo ou Mot de passe incorrect' });
+                res.send('ko');
+            }*!/
+        });
+    });*/
 });
 
 
@@ -119,6 +141,32 @@ app.get('/inscription', (req, res) => {
     res.render('registration');
 });
 
+// game.html
+app.get('/questions', (req, res) => {
+    //console.log('resultat ', req.body);
+
+    MongoClient.connect(url,{useNewUrlParser:true, useUnifiedTopology:true}, (err, client) => {
+        if (err) {
+            return console.log('err');// return arrête la route
+        }
+
+        const db = client.db(dbName);
+        const myCollection = db.collection('questions');
+        myCollection.find({}).toArray((err, docs) => {
+            client.close();
+            console.log('docs === ', docs);
+            //res.render('accueil', {title: 'Accueil', datas: docs});
+            if (docs.length) {
+                //res.render('game', { data:docs });
+                //res.render('index');
+                res.send(docs);
+            }else {
+                //res.render('index', { message: 'Pseudo ou Mot de passe incorrect' });
+                res.send('ko');
+            }
+        });
+    });
+});
 
 
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Game test</title>
+        <style>
+            #timer {
+                display: flex;
+                background: tomato;
+                justify-content: center;
+                    align-items: center;
+                height: 200px;
+            }
+            #timer article {background: #55efc4;}
+            #question { display: flex; background: antiquewhite; height: 200px; }
+            #question aside { background: darkcyan;}
+            #question .test:nth-child(1) {
+                flex: 1;
+            }
+            #question .test:nth-child(2) {
+                flex: 2;
+            }
+            #question .test:nth-child(3) {
+                flex: 1;
+            }
+            article div { border: 1px solid gold;}
+        </style>
+    </head>
+    <body>
+        <main>
+
+            <section id="timer">
+                <article> timer </article>
+                <article> timer </article>
+            </section>
+
+            <section id="question">
+                <aside class="test">left side</aside>
+                <article class="test">center
+                    <div>
+                        <h2>Question : </h2>
+                        <p>Qui est le créateur du JavaScript ?</p>
+                    </div>
+                    <div>a/ moi</div>
+                    <div>b/ pas moi</div>
+                    <div>C/ cé pas</div>
+                    <div>D/ Question de merde</div>
+                    dsqsddqd
+                </article>
+                <aside class="test">right side</aside>
+            </section>
+
+        </main>
+
+        <script>
+            db.questions.insert({ question: 'Qui a inventer le Javascript ?',
+                                  a: 'moi', b: 'pas moi', c: 'cé pas', d: 'question nul !', response: 'b'})
+        </script>
+    </body>
+</html>
