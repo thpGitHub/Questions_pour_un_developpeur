@@ -1,0 +1,32 @@
+include includes/head
+link(rel='stylesheet' href='/style/style_game.css')
+
+include includes/header
+
+h1 Page du jeu en construction :)
+
+-
+    const list = ["Uno", "Dos", "Tres",
+        "Cuatro", "Cinco", "Seis"]
+    console.log('dans pug',list[1]);
+p= list[1]
+
+
+script.
+    console.log('dans script');
+    const request = new XMLHttpRequest();
+
+    request.onreadystatechange = function () {
+        //if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (this.readyState === 4 && this.status === 200) {
+             let reponse = JSON.parse(this.responseText);
+            // console.log(reponse.current_condition.condition);
+            //let reponse = this.responseText;
+            console.log('la réponse depuis game pug = ',reponse);
+            console.log(reponse[0].question);
+            console.log('toto');
+            //document.body.innerHTML = reponse.current_condition.condition;
+        }
+    };
+    request.open("GET", "/questions");
+    request.send();

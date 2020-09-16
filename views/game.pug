@@ -3,29 +3,51 @@ link(rel='stylesheet' href='/style/style_game.css')
 
 include includes/header
 
-h1 Page du jeu en construction :)
--
-    const list = ["Uno", "Dos", "Tres",
-        "Cuatro", "Cinco", "Seis"]
+main
+    section#timer
+        article  15
+    section#question
+        aside#side_player1.parts Joueur 1
+            p
+            p score :
+                span#score_player_one  0
+        article.parts
+            | center
+            #message_one_player
+            #message_all_players
 
-    console.log('dans pug',list[1]);
-p= list[1]
-h2
-script.
-    console.log('dans script');
-    const request = new XMLHttpRequest();
+            #q
+                h2 Question :
+                p
+            #response_a
+                span A :
+                span#a
+            #response_b
+                span B :
+                span#b
+            #response_c
+                span C :
+                span#c
+            #response_d
+                span D :
+                span#d
+        aside#side_player2.parts Joueur 2
+            p
+            p score :
+                span#score_player_two  0
+//h1 Page du jeu en construction :)
+//
+//p#player1 Joueur 1 :
+//    span
+//p#player2 Joueur 2 :
+//    span
+//p#message Message :
+//    span
+//p#question Question :
+//    span A
+//        div#A
+//
+//input(type="button" value="click me plz")
 
-    request.onreadystatechange = function () {
-        //if (httpRequest.readyState === XMLHttpRequest.DONE) {
-        if (this.readyState === 4 && this.status === 200) {
-             let reponse = JSON.parse(this.responseText);
-            // console.log(reponse.current_condition.condition);
-            //let reponse = this.responseText;
-            console.log('la réponse depuis game pug = ',reponse);
-            console.log(reponse[0].question);
-            console.log('toto');
-            //document.body.innerHTML = reponse.current_condition.condition;
-        }
-    };
-    request.open("GET", "/questions");
-    request.send();
+script(src='/socket.io/socket.io.js')
+script(src='/js/game.js')

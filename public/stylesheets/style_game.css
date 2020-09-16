@@ -1,6 +1,86 @@
+main {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    color: white;
+    position: absolute;
+}
+#timer {
+    height: 200px;
+    display: flex;
+    background: #b2bec3;
+    align-items: center;
+    justify-content: center;
+}
+#question {
+    height: 250px;
+    display: flex;
+    background: #55efc4;
+}
+#question aside { background: darkcyan;}
+#question .parts:nth-child(1) {
+    flex: 1;
+}
+#question .parts:nth-child(2) {
+    flex: 2;
+}
+#question .parts:nth-child(3) {
+    flex: 1;
+}
+article div { border: 1px solid gold;}
+
+/*
+css pour le timer
+*/
+
+@font-face {
+    font-family: 'robotica';
+    src: url('./ROBOTICA.ttf');
+}
+/*body {
+    color: #ffffff;
+    background-color: #000000;
+    font-family: 'robotica', sans-serif;
+}*/
+#timer {
+    font-family: 'robotica', sans-serif;
+    color:tomato;
+    /*height: 80px;
+    width: 80px;*/
+    font-size: 50px;
+}
+
+
+
+
+/*
 h1 {
     top: 0;
     left: 0;
     color: white;
     position: absolute;
 }
+p {
+    left: 0;
+    color: white;
+    position: absolute
+}
+p#player1 {
+    top: 60px;
+}
+p#player2 {
+    top: 120px;
+}
+p#message {
+    top: 180px;
+}
+p#question {
+    top: 300px;
+}
+input {
+    top: 240px;
+    left: 0;
+    color: tomato;
+    position: absolute;
+}
+*/

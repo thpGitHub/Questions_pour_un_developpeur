@@ -5,14 +5,14 @@
         <title>Game test</title>
         <style>
             #timer {
+                height: 200px;
                 display: flex;
                 background: tomato;
+                align-items: center;
                 justify-content: center;
-                    align-items: center;
-                height: 200px;
             }
             #timer article {background: #55efc4;}
-            #question { display: flex; background: antiquewhite; height: 200px; }
+            #question { display: flex; background: antiquewhite; height: 250px; }
             #question aside { background: darkcyan;}
             #question .test:nth-child(1) {
                 flex: 1;
@@ -37,24 +37,24 @@
             <section id="question">
                 <aside class="test">left side</aside>
                 <article class="test">center
-                    <div>
+                    <div id="q">
                         <h2>Question : </h2>
                         <p>Qui est le créateur du JavaScript ?</p>
                     </div>
-                    <div>a/ moi</div>
-                    <div>b/ pas moi</div>
-                    <div>C/ cé pas</div>
-                    <div>D/ Question de merde</div>
-                    dsqsddqd
+                    <div id="response_a"><span>A : </span><span> Moi</span></div>
+                    <div id="response_b"><span>B : </span><span>pas moi</span></div>
+                    <div id="response_c"><span>C : </span><span>cé pas</span></div>
+                    <div id="response_d"><span>D : </span><span>Question de merde</span></div>
+
                 </article>
                 <aside class="test">right side</aside>
             </section>
 
         </main>
 
-        <script>
+       <!-- <script>
             db.questions.insert({ question: 'Qui a inventer le Javascript ?',
                                   a: 'moi', b: 'pas moi', c: 'cé pas', d: 'question nul !', response: 'b'})
-        </script>
+        </script>-->
     </body>
 </html>

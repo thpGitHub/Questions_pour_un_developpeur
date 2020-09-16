@@ -3,48 +3,12 @@ link(rel='stylesheet' href='/style/style_login.css')
 
 include includes/header
 
-form.box(action='' method='post')
+form.box(action='/game' method='post')
     h1 LOGIN
     #message
-    input(type='text' name='pseudo' placeholder='Pseudo')
-    input(type='password' name='pwd' placeholder='Password')
-    input(type='submit' name='submit' value='Login')
+    input#pseudo(type='text' name='pseudo' placeholder='Pseudo')
+    input#password(type='password' name='pwd' placeholder='Password')
+    input(type='submit' name='btn_submit' value='Login')
     a(href='/inscription') Create an Account
     script(src='/js/login.js')
-//script.
-//
-//    document.querySelector('input[type="submit"]').addEventListener('click', (e) => {
-//        e.preventDefault();
-//
-//        // check empty fields
-//        if (document.querySelector('input[type="text"]').value === '' ||
-//            document.querySelector('input[type="password"]').value === '') {
-//                //e.preventDefault();
-//                document.querySelector('#message').innerHTML = 'Veuillez remplir tous les champs S V P';
-//                document.querySelector('input[type="text"]').value = '';
-//                document.querySelector('input[type="password"]').value = '';
-//                return;
-//        }
-//
-//        // AJAX request for check pseudo and email
-//        const request = new XMLHttpRequest(),
-//              url     = '/test';// route pour le serveur express
-//
-//
-//        request.open('post', url);
-//        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//        request.send(`pseudo=${document.querySelector('input[type="text"]').value}&password=${document.querySelector('input[type="password"]').value}`);
-//
-//        request.onload = function () {
-//            console.log('la reponse = ', request.response);
-//            if (request.response === 'ko') {
-//                document.querySelector('#message').innerHTML = 'Pseudo ou mot de passe incorrect !';
-//                document.querySelector('input[type="text"]').value = '';
-//                document.querySelector('input[type="password"]').value = '';
-//            }
-//            else  {
-//                window.location = "/game";
-//
-//             }
-//        }
-//    })
+
