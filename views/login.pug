@@ -6,7 +6,7 @@ include includes/header
 form.box(action='/game' method='post')
     h1 LOGIN
     #message
-    input#pseudo(type='text' name='pseudo' placeholder='Pseudo')
+    input#pseudo(type='text' name='pseudo' placeholder='Pseudo' autocomplete='off')
     input#password(type='password' name='pwd' placeholder='Password')
     input(type='submit' name='btn_submit' value='Login')
     a(href='/inscription') Create an Account

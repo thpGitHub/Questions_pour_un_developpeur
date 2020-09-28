@@ -29,9 +29,21 @@ socket.on('pseudo du gamer', function (msg) {
 
 });
 
-socket.on('question are ready', function (msg) {
+/*socket.on('question are ready', function (msg) {
     console.log('question are ready recu :)');
     document.querySelector('#message_all_players').innerHTML = 'Le jeu va commencer dans 10 secondes!';
+
+    setTimeout(function () {
+        socket.emit('give timer and question');
+    }, 10000);
+});*/
+socket.on('start game', function () {
+    document.querySelector('#message_all_players').innerHTML = 'Le jeu va commencer dans 10 secondes!';
+});
+
+socket.on('question are ready', function (msg) {
+    console.log('question are ready recu :)');
+    //document.querySelector('#message_all_players').innerHTML = 'Le jeu va commencer dans 10 secondes!';
 
     setTimeout(function () {
         socket.emit('give timer and question');

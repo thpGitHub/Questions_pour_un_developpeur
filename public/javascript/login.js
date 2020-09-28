@@ -11,8 +11,9 @@ document.querySelector('input[type="submit"]').addEventListener('click', (e) => 
         document.querySelector('input[type="password"]').value === '') {
         //e.preventDefault();
         document.querySelector('#message')              .innerHTML = 'veuillez remplir tous les champs';
-        document.querySelector('input[type="text"]')    .value = '';
-        document.querySelector('input[type="password"]').value = '';
+        /*document.querySelector('input[type="text"]')    .value = '';
+        document.querySelector('input[type="password"]').value = '';*/
+        document.querySelector('form').reset();
 
         check.fields = 'ko';
 
@@ -31,8 +32,9 @@ document.querySelector('input[type="submit"]').addEventListener('click', (e) => 
             console.log('la reponse = ', request.response);
             if (request.response === 'ko') {
                 document.querySelector('#message')              .innerHTML = 'pseudo ou mot de passe incorrect';
-                document.querySelector('input[type="text"]')    .value = '';
-                document.querySelector('input[type="password"]').value = '';
+                /*document.querySelector('input[type="text"]')    .value = '';
+                document.querySelector('input[type="password"]').value = '';*/
+                document.querySelector('form').reset();
                 check.pseudo_password = 'ko';
             }
             else  {
