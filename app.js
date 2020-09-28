@@ -5,7 +5,7 @@ const express    = require('express'),
       bodyParser = require('body-parser'),
       io         = require('socket.io')(http);
 
-//require('dotenv').config();
+require('dotenv').config();
 
 // DB
 const MongoClient = require('mongodb').MongoClient,
@@ -391,3 +391,9 @@ http.listen(port, () => {
 *                             response: 'd'})
 * */
 
+/*
+λ git add .
+    warning: LF will be replaced by CRLF in .gitignore.
+    The file will have its original line endings in your working directory.
+    warning: LF will be replaced by CRLF in package.json.
+    The file will have its original line endings in your working directory.*/
