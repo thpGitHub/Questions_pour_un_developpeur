@@ -2,7 +2,7 @@ require('dotenv').config(); // variables environment
 
 const express    = require('express'),
       app        = express(),
-      port       = 65000,
+      //port       = 65000,
       http       = require('http').createServer(app),
       bodyParser = require('body-parser'),
       io         = require('socket.io')(http);
@@ -460,6 +460,15 @@ app.get('/questions', (req, res) => {
 
 
 // toto
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 8000;
+}
+//app.listen(port);
+
+
+//http.listen(port, () => {
 http.listen(port, () => {
     const date = new Date();
     console.log(`${ date.getHours() }H${ date.getMinutes() } on port : ${ port }`);
@@ -480,3 +489,5 @@ http.listen(port, () => {
     The file will have its original line endings in your working directory.
     warning: LF will be replaced by CRLF in package.json.
     The file will have its original line endings in your working directory.*/
+
+// app.listen(process.env.PORT);
