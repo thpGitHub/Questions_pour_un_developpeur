@@ -13,7 +13,7 @@ connectDB = (cb) => {
     }
     const theDB = client.db(dbName);
     cb(theDB, client);
-  }).then();
+  });
 };
 
 connectDB_test = (cb) => {
