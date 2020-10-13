@@ -1,3 +1,5 @@
+require('dotenv').config(); // variables environment
+
 const express    = require('express'),
       app        = express(),
       port       = 65000,
@@ -5,13 +7,14 @@ const express    = require('express'),
       bodyParser = require('body-parser'),
       io         = require('socket.io')(http);
 
-require('dotenv').config();
+const mongoDB_connect = require('./public/javascript/db');
+    //mongoDB_connect.test();
 
 // DB
-const MongoClient = require('mongodb').MongoClient,
+/*const MongoClient = require('mongodb').MongoClient,
       //url         = 'mongodb://localhost:27017/',
       url         = process.env.DB_HOST_LOCAL,
-      dbName      = 'questions_for_a_developer';
+      dbName      = 'questions_for_a_developer';*/
 // mongodb+srv://thp_adm:<password>@cluster0-q8dcp.mongodb.net/<dbname>?retryWrites=true&w=majority
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -35,7 +38,38 @@ app.post('/login', (req, res) => {
 app.post('/verify_login', (req, res) => {
    console.log('resultat de verify_login', req.body);
 
-    MongoClient.connect(url,{useNewUrlParser:true, useUnifiedTopology:true}, (err, client) => {
+   mongoDB_connect.find({
+           theCollection: 'login',
+           filter: {
+               pseudo: req.body.pseudo,
+               password: req.body.password
+           },
+           done: (docs) => {
+               if (docs.length) {
+                   res.send('ok');
+               }else {
+                   res.send('ko');
+               }
+           }
+   })
+
+    /*mongoDB_connect.connect((theDB, client) => {
+            const myCollection = theDB.collection('login');
+            myCollection.find({ pseudo: req.body.pseudo, password: req.body.password }).toArray((err, docs) => {
+                client.close();
+
+                if (docs.length) {
+                    res.send('ok');
+                    //res.render('index'); // commenté car cela ne sert a rien premiere solution
+                }else {
+                    //res.render('index', { message: 'Pseudo ou Mot de passe incorrect' });
+                    res.send('ko');
+                }
+            });
+        }
+    )*/
+
+    /*MongoClient.connect(url,{useNewUrlParser:true, useUnifiedTopology:true}, (err, client) => {
         if (err) {
             return console.log('err');// return arrête la route
         }
@@ -54,11 +88,26 @@ app.post('/verify_login', (req, res) => {
                 res.send('ko');
             }
         });
-    });
+    });*/
 });
 app.post('/verify_registration', (req, res) => {
 
-    MongoClient.connect(url,{useNewUrlParser:true, useUnifiedTopology:true}, (err, client) => {
+    mongoDB_connect.find({
+        theCollection: 'login',
+        filter: {
+            pseudo: req.body.pseudo
+        },
+        done: (docs) => {
+            if (docs.length) {
+                res.send('ok le pseudo existe dans la bdd');
+                //res.render('game_arena');
+            }else {
+                //res.render('index', { message: 'Pseudo ou Mot de passe incorrect' });
+                res.send('ko le pseudo n existe PAS dans la bdd');
+            }
+        }
+    })
+    /*MongoClient.connect(url,{useNewUrlParser:true, useUnifiedTopology:true}, (err, client) => {
         if (err) {
             return console.log('err');// return arrête la route
         }
@@ -76,7 +125,7 @@ app.post('/verify_registration', (req, res) => {
                 res.send('ko le pseudo n existe PAS dans la bdd');
             }
         });
-    });
+    });*/
 
 });
 app.post('/save_registration_in_db', (req, res) => {
@@ -202,7 +251,39 @@ app.post('/game', (req, res) => {
     * connection a la bdd pour récupérer les questions
     */
     if (params_game.tab_gamer_connect.length === 0) {
-        MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
+
+        mongoDB_connect.find({
+            theCollection: 'questions',
+            filter: {},
+            done: (docs) => {
+                if (docs.length) {
+                    params_game.all_questions = docs;
+                } else {
+                    //res.send('ko');
+                }
+            }
+        })
+        /*mongoDB_connect.connectDB((theDB, client) => {
+                const myCollection = theDB.collection('questions');
+                myCollection.find({}).toArray((err, docs) => {
+                    client.close();
+                    console.log(docs);
+                    if (docs.length) {
+                        params_game.all_questions = docs;
+                        //console.log('all_question ===> ',all_questions);
+                        // io.emit ( 'question are ready' ); 08/09/20
+                        //socket.emit('question are ready');
+                        //socket.emit ( 'question are ready' );
+                        //io.emit ( 'questions' , all_questions[counter_of_questions]);
+                    } else {
+                        //res.render('index', { message: 'Pseudo ou Mot de passe incorrect' });
+                        //res.send('ko');
+                    }
+                });
+            }
+        )*/
+
+        /*MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
             if (err) {
                 return console.log('err');// return arrête la route
             }
@@ -224,7 +305,7 @@ app.post('/game', (req, res) => {
                     //res.send('ko');
                 }
             });
-        });
+        });*/
 
     }
 
@@ -349,6 +430,7 @@ app.get('/inscription', (req, res) => {
 });
 
 // game.html
+/*
 app.get('/questions', (req, res) => {
     //console.log('resultat ', req.body);
 
@@ -374,6 +456,7 @@ app.get('/questions', (req, res) => {
         });
     });
 });
+*/
 
 
 // toto
