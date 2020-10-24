@@ -2,4 +2,4 @@ node_modules
 .idea
 test*
 .gitignore
-.env
+# .env
