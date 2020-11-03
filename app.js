@@ -1,5 +1,5 @@
 require('dotenv').config(); // variables environment
-const toto = 1;
+
 const express    = require('express'),
       app        = express(),
       //port       = 65000,
