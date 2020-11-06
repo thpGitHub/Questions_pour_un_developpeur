@@ -1,5 +1,4 @@
+#Questions_pour_un_developpeur/test
 node_modules
 .idea
-test*
 *.env
-test
