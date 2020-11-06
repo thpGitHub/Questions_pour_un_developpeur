@@ -1,1 +1,1 @@
-toto merge=ours
+*.env merge=ours
