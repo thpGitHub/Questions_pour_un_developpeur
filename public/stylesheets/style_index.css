@@ -35,7 +35,7 @@ form h3 {
     letter-spacing: 0.5px;
 }
 input[type="submit"] {
-    width: 50px;
+    /*width: 50px;*/
     color: white;
     border: 1px solid #55efc4;
     padding: 5px;

@@ -22,7 +22,7 @@ app.use('/js',    express.static(__dirname + '/public/javascript'));
 app.use('/img',   express.static(__dirname + '/public/images'));
 app.use('/style', express.static(__dirname + '/public/stylesheets'));
 
-app.set('view engine', 'pug');
+app.set('view engine', 'pug'); // moteur de templete pug
 
 
 app.get('/', (req, res) => {
