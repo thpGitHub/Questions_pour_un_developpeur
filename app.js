@@ -1,14 +1,11 @@
 require('dotenv').config(); // variables environment
 
-const express    = require('express'),
-      app        = express(),
-      //port       = 65000,
-      http       = require('http').createServer(app),
-      bodyParser = require('body-parser'),
-      io         = require('socket.io')(http);
-
-const mongoDB_connect = require('./public/javascript/db');
-    //mongoDB_connect.test();
+const express         = require('express'),
+      app             = express(),
+      http            = require('http').createServer(app),
+      bodyParser      = require('body-parser'),
+      io              = require('socket.io')(http),
+      mongoDB_connect = require('./public/javascript/db');
 
 // DB
 /*const MongoClient = require('mongodb').MongoClient,
