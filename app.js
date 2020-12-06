@@ -126,8 +126,31 @@ app.post('/verify_registration', (req, res) => {
 
 });
 app.post('/save_registration_in_db', (req, res) => {
+    mongoDB_connect.insert({
+        theCollection: 'login',
+        filter: {
+            pseudo: req.body.pseudo,
+            picture: '',
+            password: req.body.password,
+            best_score: 0
+        },
+        done: () => {
+            res.render('login');
+        }
+        //}
+        /*done: (docs) => {
+            if (docs.length) {
+                res.send('ok le pseudo existe dans la bdd');
+                //res.render('game_arena');
+            }else {
+                //res.render('index', { message: 'Pseudo ou Mot de passe incorrect' });
+                res.send('ko le pseudo n existe PAS dans la bdd');
+            }
+        }*/
+    })
+
     //MongoClient.connect(url,{ useNewUrlParser:true, useUnifiedTopology:true }, (err, client) => {
-    MongoClient.connect('mongodb+srv://thp_adm:admthp@cluster0-q8dcp.mongodb.net/questions_for_a_developer?retryWrites=true&w=majority',{ useNewUrlParser:true, useUnifiedTopology:true }, (err, client) => {
+    /*MongoClient.connect('mongodb+srv://thp_adm:admthp@cluster0-q8dcp.mongodb.net/questions_for_a_developer?retryWrites=true&w=majority',{ useNewUrlParser:true, useUnifiedTopology:true }, (err, client) => {
         if (err) {
             return console.log('err');
         }
@@ -142,7 +165,7 @@ app.post('/save_registration_in_db', (req, res) => {
             //res.send('ok');
             res.render('login');
         })
-    });
+    });*/
 });
 
 /*app.get('/game', (req, res) => {

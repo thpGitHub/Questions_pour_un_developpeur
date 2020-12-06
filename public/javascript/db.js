@@ -39,9 +39,13 @@ exports.find = (settings) => {
 exports.insert = (settings) => {
   connectDB_test( (theDB, client) => {
     const myCollection = theDB.collection(settings.theCollection);
-    myCollection.insertOne(settings.filter).toArray((err, docs) => {
+    myCollection.insertOne(settings.filter, (err) => {
       client.close();
-      settings.done(docs);
-    });
+      settings.done();
+
+    })/*.then(()=> {
+      client.close();
+      settings.done();
+    })*/
   });
 };
